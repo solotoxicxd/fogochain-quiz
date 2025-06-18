@@ -70,10 +70,11 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <h1 className="quiz-title">FogoChain Knowledge Trial</h1>
+      <h1 className="quiz-title">Are You Fogo Enough?</h1>
       <p className="subtitle">
-        Quickfire quiz — answer fast, rise higher.
+        A quick-fire challenge to test your flame—10 questions, 5 seconds each. Let’s find out if you’re truly forged in fire.
       </p>
+
 
       <audio ref={tickRef} src="/tick.mp3" preload="auto" />
 
@@ -112,11 +113,13 @@ export default function App() {
       )}
 
       <footer className="footer">
-        Built with 🔥 by{" "}
-        <a href="https://x.com/bytrizz404" target="_blank" rel="noreferrer">
-          @bytrizz404
-        </a>
+        Crafted with care for the FogoChain fam by <strong>Bytrizz</strong> 💛<br />
+        Connect with me:<br />
+        <a href="https://x.com/bytrizz44" target="_blank" rel="noreferrer">@bytrizz44 on X</a> &nbsp;|&nbsp;
+        <span>bytrizz on Discord</span><br />
+        Made for fun, for fire, and for all who feel the flame. 🔥
       </footer>
+
     </div>
   );
 }
