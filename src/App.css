@@ -4,7 +4,7 @@
   --deep: #8b0000;
   --flame: #ff4500;
   --charcoal: #1a1a1a;
-  --text-light: #fff8f0;
+  --text-light: #ffffff;
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -27,14 +27,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #8b0000, #ff6b00, #ffc107);
-  background-size: 400% 400%;
-  animation: bgShift 12s ease infinite;
+  background: linear-gradient(to right, #8b0000, #ff6b00, #ffc107);
+  background-size: 200% 200%;
+  animation: animateBG 16s linear infinite;
   color: var(--text-light);
   line-height: 1.6;
 }
 
-@keyframes bgShift {
+@keyframes animateBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -46,7 +46,7 @@ body {
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
   background-color: rgba(26, 26, 26, 0.9);
-  border-radius: 16px;
+  border-radius: 12px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -62,20 +62,20 @@ body {
 
 .subtitle {
   font-size: var(--font-lg);
+  color: #ffd8a8;
   margin-bottom: var(--spacing-lg);
-  color: #ffc9a8;
   font-style: italic;
-  padding: 0 var(--spacing-sm);
-  max-width: 600px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 var(--spacing-sm);
 }
 
 .start-screen,
 .quiz-box,
 .result-popup {
   background: #2e0c00;
-  border: 1px solid var(--flame);
+  border: 2px solid var(--flame);
   padding: var(--spacing-lg) var(--spacing-md);
   border-radius: 12px;
   margin-top: var(--spacing-lg);
@@ -85,22 +85,21 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  row-gap: var(--spacing-md);
-  column-gap: var(--spacing-md);
+  gap: var(--spacing-md);
   margin: var(--spacing-lg) 0;
 }
 
 .options-grid button {
-  flex: 0 1 48%;
+  flex: 0 1 45%;
   background-color: var(--primary);
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 6px;
   padding: var(--spacing-md);
   font-weight: 600;
   font-size: var(--font-md);
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.3s ease;
 }
 
 .options-grid button:hover {
@@ -110,7 +109,7 @@ body {
 .timer {
   font-size: var(--font-lg);
   margin-top: var(--spacing-md);
-  font-weight: 700;
+  font-weight: bold;
   color: var(--accent);
 }
 
@@ -118,36 +117,50 @@ body {
 .restart-btn,
 .share-button {
   padding: var(--spacing-md) var(--spacing-lg);
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
   background-color: var(--flame);
+  color: white;
   border: none;
   border-radius: 8px;
-  color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   margin: var(--spacing-sm);
-  font-weight: 700;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
   min-width: 140px;
 }
 
 .start-btn:hover,
 .restart-btn:hover,
 .share-button:hover {
-  background-color: var(--primary);
+  background-color: var(--accent);
 }
 
-/* Removed badge */
+.result-popup h2 {
+  font-size: var(--font-xl);
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+}
 
-/* Footer */
+.score {
+  font-size: var(--font-lg);
+  color: white;
+  margin: var(--spacing-md) 0;
+}
+
 .footer {
   margin-top: var(--spacing-xl);
   font-size: var(--font-sm);
   color: #ffddb0;
-  padding: 0 var(--spacing-sm);
-  text-align: center;
+  padding: var(--spacing-sm);
 }
 
-/* Responsive for mobile */
+.footer a {
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Responsive Layout */
 @media screen and (max-width: 600px) {
   .quiz-title {
     font-size: 2.2rem;
@@ -159,19 +172,16 @@ body {
 
   .options-grid {
     flex-direction: column;
-    gap: var(--spacing-sm);
   }
 
   .options-grid button {
     flex: 1 1 100%;
-    font-size: var(--font-md);
   }
 
   .start-btn,
   .restart-btn,
   .share-button {
     width: 100%;
-    font-size: var(--font-md);
   }
 
   .app-container {
