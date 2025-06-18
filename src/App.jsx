@@ -11,30 +11,31 @@ function App() {
   const [timeLeft, setTimeLeft] = useState(5);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const quizSet = [...questions].sort(() => 0.5 - Math.random()).slice(0, 10);
+  const quizSet = React.useMemo(() => [...questions].sort(() => 0.5 - Math.random()).slice(0, 10), []);
 
   useEffect(() => {
     if (!started || showPopup || isDisabled) return;
-    if (timeLeft === 0) {
-      setIsDisabled(true);
-    } else {
+    if (timeLeft > 0) {
       const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
       return () => clearInterval(timer);
+    } else {
+      // Time ran out — disable options, show "Next" button
+      setIsDisabled(true);
     }
   }, [timeLeft, started, currentQ, showPopup, isDisabled]);
 
   const handleAnswer = (option) => {
-    if (option === quizSet[currentQ].answer) {
-      setScore(score + 1);
+    if (!isDisabled && option === quizSet[currentQ].answer) {
+      setScore(prev => prev + 1);
     }
-    moveToNextQuestion();
+    setIsDisabled(true);
   };
 
   const moveToNextQuestion = () => {
     if (currentQ === quizSet.length - 1) {
       setShowPopup(true);
     } else {
-      setCurrentQ(currentQ + 1);
+      setCurrentQ(prev => prev + 1);
       setTimeLeft(5);
       setIsDisabled(false);
     }
@@ -76,7 +77,7 @@ function App() {
             ))}
           </div>
           <div className="timer">
-            {isDisabled ? "⏱️ Time’s up!" : `⏱️ ${timeLeft}s`}
+            {isDisabled && timeLeft === 0 ? "⏱️ Time’s up!" : `⏱️ ${timeLeft}s`}
           </div>
           {isDisabled && (
             <button className="restart-btn" onClick={moveToNextQuestion}>
