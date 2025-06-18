@@ -5,7 +5,6 @@
   --flame: #ff4500;
   --charcoal: #1a1a1a;
   --text-light: #fff8f0;
-  --max-width: 860px;
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -20,53 +19,27 @@
   --font-lg: 1.25rem;
   --font-xl: 2rem;
   --font-xxl: 3.25rem;
+
+  --max-width: 860px;
 }
 
-/* 🔥 Animated flame background */
-.flame-bg {
-  background: linear-gradient(145deg, #ff6b00 0%, #ffb300 50%, #8b0000 100%);
-  animation: flickerBg 4s infinite alternate;
-  background-size: 400% 400%;
-}
-
-@keyframes flickerBg {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ✨ Fade-in animation */
-.fade-in {
-  animation: fadeIn 0.6s ease-in-out both;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Base body and container */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--charcoal);
+  background: linear-gradient(135deg, #8b0000, #ff6b00, #ffc107);
+  background-size: 400% 400%;
+  animation: flameGradient 15s ease infinite;
   color: var(--text-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes flameGradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .app-container {
@@ -74,7 +47,7 @@ body {
   margin: auto;
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
-  background-color: #2a0d00cc; /* slight transparent dark bg for contrast */
+  background-color: rgba(26, 26, 26, 0.85);
   border-radius: 16px;
   box-shadow: 0 0 40px rgba(255, 104, 0, 0.7);
   min-height: 100vh;
@@ -83,7 +56,6 @@ body {
   justify-content: center;
 }
 
-/* Titles and subtitles */
 .quiz-title {
   font-size: var(--font-xxl);
   color: var(--accent);
@@ -106,7 +78,6 @@ body {
   margin-right: auto;
 }
 
-/* Quiz box & popup background with padding */
 .start-screen,
 .quiz-box,
 .result-popup {
@@ -118,7 +89,6 @@ body {
   margin-top: var(--spacing-lg);
 }
 
-/* Option buttons */
 .options-grid {
   display: flex;
   flex-wrap: wrap;
@@ -140,6 +110,7 @@ body {
   font-size: var(--font-md);
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 8px rgba(255, 107, 0, 0.6);
+  cursor: pointer;
 }
 
 .options-grid button:hover,
@@ -147,12 +118,10 @@ body {
   background-color: var(--flame);
   outline: none;
   box-shadow: 0 0 20px #ff5722cc;
-  cursor: pointer;
   transform: translateY(-3px);
   transition: all 0.3s ease;
 }
 
-/* Timer with stronger contrast */
 .timer {
   font-size: var(--font-lg);
   margin-top: var(--spacing-md);
@@ -161,7 +130,6 @@ body {
   text-shadow: 0 0 6px #ffb300cc;
 }
 
-/* Buttons (start, restart, share) */
 .start-btn,
 .restart-btn,
 .share-button {
@@ -186,41 +154,6 @@ body {
   box-shadow: 0 0 24px #ff5722ff;
 }
 
-/* Badge container */
-.badge-container {
-  padding: var(--spacing-lg);
-  margin: var(--spacing-md) auto;
-  background: #3c1000cc;
-  border: 2px solid var(--accent);
-  border-radius: 12px;
-  max-width: 320px;
-  box-shadow: 0 0 20px rgba(255, 104, 0, 0.6);
-  color: white;
-  font-weight: 600;
-  user-select: none;
-}
-
-/* Leaderboard text */
-.leaderboard h3 {
-  color: var(--accent);
-  margin-bottom: var(--spacing-sm);
-  font-size: var(--font-lg);
-  text-shadow: 0 0 5px #ffb300cc;
-}
-
-.leaderboard ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.leaderboard li {
-  font-size: var(--font-md);
-  margin-bottom: var(--spacing-sm);
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
-  padding-bottom: var(--spacing-xs);
-}
-
-/* Footer with padding and color */
 .footer {
   margin-top: var(--spacing-xl);
   font-size: var(--font-sm);
@@ -233,7 +166,7 @@ body {
   margin-right: auto;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media screen and (max-width: 480px) {
   .quiz-title {
     font-size: 2.2rem;
