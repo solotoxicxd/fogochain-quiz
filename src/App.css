@@ -155,3 +155,37 @@ body {
     min-width: 100%;
   }
 }
+/* 🔥 Animated flame background */
+.flame-bg {
+  background: linear-gradient(145deg, #ff6b00 0%, #ffb300 50%, #8b0000 100%);
+  animation: flickerBg 4s infinite alternate;
+  background-size: 400% 400%;
+}
+
+@keyframes flickerBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ✨ Fade-in animation for screen transitions */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
