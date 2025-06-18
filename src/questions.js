@@ -1,28 +1,18 @@
 export const questions = [
   {
-    question: "What is FogoChain designed to do onchain?",
+    question: "What is FogoChain?",
     options: [
-      "Enable traditional trading mechanisms",
-      "Host video games",
-      "Replace Ethereum",
-      "Focus only on NFTs"
+      "A blockchain for fiery transactions",
+      "A decentralized exchange",
+      "A layer-1 blockchain focused on trading",
+      "A social media platform"
     ],
-    answer: "Enable traditional trading mechanisms"
+    answer: "A layer-1 blockchain focused on trading"
   },
   {
-    question: "Who is one of the co-founders of FogoChain?",
-    options: ["Doug Colkitt", "Vitalik Buterin", "Satoshi Nakamoto", "Elon Musk"],
-    answer: "Doug Colkitt"
+    question: "Which colors represent FogoChain's theme?",
+    options: ["Blue and White", "Red, Yellow and Orange", "Green and Black", "Purple and Pink"],
+    answer: "Red, Yellow and Orange"
   },
-  {
-    question: "FogoChain prioritizes which of the following?",
-    options: [
-      "Airdrops and rewards",
-      "Onchain finance performance",
-      "Social media tokenization",
-      "Exclusive NFT drops"
-    ],
-    answer: "Onchain finance performance"
-  },
-  // Add up to 100 such questions
+  // ... Add more questions here, total 100 for your quiz
 ];
