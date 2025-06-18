@@ -5,14 +5,13 @@ export const questions = [
     answer: "A Layer 1 blockchain"
   },
   {
-    question: "What does it mean to be Fogolised?",
-    options: ["To join FogoChain testnet", "To support hype", "To join the fire", "To burn tokens"],
-    answer: "To join the fire"
+    question: "What does being Fogolised mean?",
+    options: ["Joining the community", "Getting tokens", "Burning gas", "Being onboarded to fire"],
+    answer: "Being onboarded to fire"
   },
   {
-    question: "FogoChain is built for?",
-    options: ["Gaming", "On-chain trading", "Memes", "Layer 2 scaling"],
-    answer: "On-chain trading"
+    question: "What’s FogoChain built for?",
+    options: ["Gaming", "DeFi trading", "NFTs", "Messaging"],
+    answer: "DeFi trading"
   }
-  // Add more as needed
 ];
