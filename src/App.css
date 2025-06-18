@@ -6,6 +6,7 @@ body {
   background-size: 400% 400%;
   animation: flameflow 15s ease infinite;
   color: #fff;
+  line-height: 1.6;
 }
 
 @keyframes flameflow {
@@ -17,23 +18,24 @@ body {
 .app-container {
   max-width: 800px;
   margin: auto;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
 }
 
 .quiz-title {
-  font-size: 2.75rem;
+  font-size: 3rem;
   background: linear-gradient(to right, #ff512f, #f9d423);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   margin-bottom: 2.5rem;
   color: #ffe9c5;
   font-style: italic;
+  padding: 0 1rem;
 }
 
 .start-screen,
@@ -41,10 +43,10 @@ body {
 .result-popup {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  padding: 2.5rem;
+  padding: 3rem 2rem;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .start-btn,
@@ -59,7 +61,7 @@ body {
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 0.5rem 0.75rem;
+  margin: 0.75rem 1rem;
 }
 
 .start-btn:hover,
@@ -76,29 +78,38 @@ body {
   justify-content: center;
   gap: 1rem;
   margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.options-grid button {
+  min-width: 40%;
+  flex: 1 1 auto;
+  white-space: normal;
 }
 
 .timer {
   font-size: 1.2rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-weight: bold;
 }
 
 .result-popup h2 {
   font-size: 2rem;
   color: #ffcc70;
+  margin-bottom: 1rem;
 }
 
 .score {
   margin: 1.5rem 0;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: #ffffff;
 }
 
 .footer {
-  margin-top: 2rem;
-  font-size: 0.9rem;
+  margin-top: 3rem;
+  font-size: 0.95rem;
   color: #fff5e0;
+  line-height: 1.5;
 }
 
 .footer a {
