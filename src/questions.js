@@ -1,17 +1,28 @@
 export const questions = [
   {
-    question: "What is FogoChain?",
-    options: ["A meme", "A Layer 1 blockchain", "A server", "A DEX"],
-    answer: "A Layer 1 blockchain"
+    question: "What is FogoChain designed to do onchain?",
+    options: [
+      "Enable traditional trading mechanisms",
+      "Host video games",
+      "Replace Ethereum",
+      "Focus only on NFTs"
+    ],
+    answer: "Enable traditional trading mechanisms"
   },
   {
-    question: "What does being Fogolised mean?",
-    options: ["Joining the community", "Getting tokens", "Burning gas", "Being onboarded to fire"],
-    answer: "Being onboarded to fire"
+    question: "Who is one of the co-founders of FogoChain?",
+    options: ["Doug Colkitt", "Vitalik Buterin", "Satoshi Nakamoto", "Elon Musk"],
+    answer: "Doug Colkitt"
   },
   {
-    question: "What’s FogoChain built for?",
-    options: ["Gaming", "DeFi trading", "NFTs", "Messaging"],
-    answer: "DeFi trading"
-  }
+    question: "FogoChain prioritizes which of the following?",
+    options: [
+      "Airdrops and rewards",
+      "Onchain finance performance",
+      "Social media tokenization",
+      "Exclusive NFT drops"
+    ],
+    answer: "Onchain finance performance"
+  },
+  // Add up to 100 like this...
 ];
