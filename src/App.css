@@ -189,3 +189,31 @@ body {
     transform: scale(1);
   }
 }
+.leaderboard {
+  margin-top: var(--spacing-lg);
+  background-color: #1e0a00;
+  border: 1px solid var(--flame);
+  padding: var(--spacing-md);
+  border-radius: 12px;
+  color: var(--text-light);
+  text-align: left;
+}
+
+.leaderboard h3 {
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-lg);
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard li {
+  font-size: var(--font-sm);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: var(--spacing-xs);
+}
