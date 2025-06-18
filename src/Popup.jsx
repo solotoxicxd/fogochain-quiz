@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ResultPopup({ score, total, onRestart }) {
+export default function Popup({ score, total, onRestart }) {
   const getRank = (s) =>
     s === total
       ? "🔥 Flame Master"
@@ -13,10 +13,19 @@ export default function ResultPopup({ score, total, onRestart }) {
       : "❄️ Cold Ash";
 
   const rank = getRank(score);
+
   const shareText = encodeURIComponent(
-    `I scored ${score}/${total} on the FogoChain Quiz and earned the rank "${rank}". Try it!`
+    `I just stepped into the flames of the FogoChain quiz and came out with a ${score}/${total} — earning the "${rank}" title.
+
+This isn’t just a quiz. It’s a trial by fire for those who claim to be part of the chain.
+
+If you're truly forged in the Fogo spirit, here's your moment to prove it:  
+https://fogochain.vercel.app
+
+Crafted with fire and fun by @bytrizz44 🔥`
   );
-  const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=https://fogochain.vercel.app`;
+
+  const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
 
   return (
     <div className="result-popup">
