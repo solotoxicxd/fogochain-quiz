@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { questions } from "./questions";
 import ResultPopup from "./Popup";
 import "./App.css";
@@ -9,35 +9,45 @@ function App() {
   const [score, setScore] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [timeLeft, setTimeLeft] = useState(5);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [revealAnswer, setRevealAnswer] = useState(false);
 
-  const quizSet = React.useMemo(() => [...questions].sort(() => 0.5 - Math.random()).slice(0, 10), []);
+  const tickRef = useRef(null);
+  const quizSet = useRef([...questions].sort(() => 0.5 - Math.random()).slice(0, 10)).current;
 
   useEffect(() => {
-    if (!started || showPopup || isDisabled) return;
-    if (timeLeft > 0) {
+    if (!started || showPopup) return;
+
+    if (timeLeft > 0 && !revealAnswer) {
       const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
+      tickRef.current?.play();
       return () => clearInterval(timer);
-    } else {
-      // Time ran out — disable options, show "Next" button
-      setIsDisabled(true);
     }
-  }, [timeLeft, started, currentQ, showPopup, isDisabled]);
+
+    if (timeLeft === 0 && !revealAnswer) {
+      setRevealAnswer(true);
+      setTimeout(() => moveToNext(), 1000);
+    }
+  }, [timeLeft, started, showPopup, revealAnswer]);
 
   const handleAnswer = (option) => {
-    if (!isDisabled && option === quizSet[currentQ].answer) {
+    if (revealAnswer) return;
+    setSelected(option);
+    setRevealAnswer(true);
+    if (option === quizSet[currentQ].answer) {
       setScore(prev => prev + 1);
     }
-    setIsDisabled(true);
+    setTimeout(() => moveToNext(), 1000);
   };
 
-  const moveToNextQuestion = () => {
+  const moveToNext = () => {
     if (currentQ === quizSet.length - 1) {
       setShowPopup(true);
     } else {
       setCurrentQ(prev => prev + 1);
       setTimeLeft(5);
-      setIsDisabled(false);
+      setSelected(null);
+      setRevealAnswer(false);
     }
   };
 
@@ -47,13 +57,16 @@ function App() {
     setScore(0);
     setTimeLeft(5);
     setShowPopup(false);
-    setIsDisabled(false);
+    setSelected(null);
+    setRevealAnswer(false);
   };
 
   return (
     <div className="app-container">
       <h1 className="quiz-title">FogoChain Knowledge Trial</h1>
       <p className="subtitle">Let’s see if the fire runs through your soul — answer quick, rise higher.</p>
+
+      <audio ref={tickRef} src="/tick.mp3" preload="auto" />
 
       {!started ? (
         <div className="start-screen">
@@ -65,25 +78,25 @@ function App() {
         <div className="quiz-box">
           <h2>{quizSet[currentQ].question}</h2>
           <div className="options-grid">
-            {quizSet[currentQ].options.map((opt, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleAnswer(opt)}
-                disabled={isDisabled}
-                style={{ opacity: isDisabled ? 0.6 : 1 }}
-              >
-                {opt}
-              </button>
-            ))}
+            {quizSet[currentQ].options.map((opt, idx) => {
+              let className = "";
+              if (revealAnswer) {
+                if (opt === quizSet[currentQ].answer) className = "correct";
+                else if (opt === selected) className = "wrong";
+              }
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleAnswer(opt)}
+                  className={className}
+                  disabled={revealAnswer}
+                >
+                  {opt}
+                </button>
+              );
+            })}
           </div>
-          <div className="timer">
-            {isDisabled && timeLeft === 0 ? "⏱️ Time’s up!" : `⏱️ ${timeLeft}s`}
-          </div>
-          {isDisabled && (
-            <button className="restart-btn" onClick={moveToNextQuestion}>
-              Next Question
-            </button>
-          )}
+          <div className="timer">⏱️ {timeLeft}s</div>
         </div>
       ) : (
         <ResultPopup score={score} total={quizSet.length} onRestart={handleRestart} />
