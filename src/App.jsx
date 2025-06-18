@@ -4,20 +4,36 @@ import ResultPopup from "./Popup";
 import "./App.css";
 
 function App() {
-  const quizSet = [...questions].sort(() => 0.5 - Math.random()).slice(0, 10);
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [quizSet, setQuizSet] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [timeLeft, setTimeLeft] = useState(5);
 
+  // Timer effect only runs when quiz is active
   useEffect(() => {
-    if (timeLeft <= 0) handleAnswer(null);
+    if (!quizStarted || showPopup) return;
+
+    if (timeLeft <= 0) {
+      handleAnswer(null); // timeout
+    }
+
     const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
     return () => clearInterval(timer);
-  }, [timeLeft, currentQ]);
+  }, [timeLeft, currentQ, quizStarted, showPopup]);
 
-  const handleAnswer = (selectedOption) => {
-    if (selectedOption === quizSet[currentQ].answer) {
+  const startQuiz = () => {
+    setQuizSet([...questions].sort(() => 0.5 - Math.random()).slice(0, 10));
+    setQuizStarted(true);
+    setCurrentQ(0);
+    setScore(0);
+    setTimeLeft(5);
+    setShowPopup(false);
+  };
+
+  const handleAnswer = (option) => {
+    if (option === quizSet[currentQ].answer) {
       setScore(score + 1);
     }
 
@@ -33,7 +49,12 @@ function App() {
     <div className="app-container">
       <h1 className="quiz-title">🔥 FogoChain Knowledge Trial 🔥</h1>
 
-      {!showPopup ? (
+      {!quizStarted ? (
+        <div className="start-screen">
+          <p>Are you ready to test your 🔥 FogoChain knowledge?</p>
+          <button className="start-btn" onClick={startQuiz}>Start Quiz</button>
+        </div>
+      ) : !showPopup ? (
         <div className="quiz-box">
           <h2>{quizSet[currentQ].question}</h2>
           <div className="options">
@@ -53,4 +74,3 @@ function App() {
 }
 
 export default App;
-
