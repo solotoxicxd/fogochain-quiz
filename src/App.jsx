@@ -11,15 +11,10 @@ function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [timeLeft, setTimeLeft] = useState(5);
 
-  // Timer effect only runs when quiz is active
   useEffect(() => {
     if (!quizStarted || showPopup) return;
-
-    if (timeLeft <= 0) {
-      handleAnswer(null); // timeout
-    }
-
-    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+    if (timeLeft <= 0) handleAnswer(null);
+    const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
     return () => clearInterval(timer);
   }, [timeLeft, currentQ, quizStarted, showPopup]);
 
@@ -33,13 +28,9 @@ function App() {
   };
 
   const handleAnswer = (option) => {
-    if (option === quizSet[currentQ].answer) {
-      setScore(score + 1);
-    }
-
-    if (currentQ === quizSet.length - 1) {
-      setShowPopup(true);
-    } else {
+    if (option === quizSet[currentQ].answer) setScore(score + 1);
+    if (currentQ === quizSet.length - 1) setShowPopup(true);
+    else {
       setCurrentQ(currentQ + 1);
       setTimeLeft(5);
     }
@@ -47,12 +38,12 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="quiz-title">🔥 FogoChain Knowledge Trial 🔥</h1>
+      <h1 className="quiz-title">FogoChain Knowledge Trial</h1>
 
       {!quizStarted ? (
         <div className="start-screen">
-          <p>Are you ready to test your 🔥 FogoChain knowledge?</p>
-          <button className="start-btn" onClick={startQuiz}>Start Quiz</button>
+          <p>Step into the fire. Prove your FogoChain wisdom.</p>
+          <button className="start-btn" onClick={startQuiz}>Begin Challenge</button>
         </div>
       ) : !showPopup ? (
         <div className="quiz-box">
@@ -64,7 +55,7 @@ function App() {
               </button>
             ))}
           </div>
-          <div className="timer">⏱️ {timeLeft}s</div>
+          <div className="timer">Time left: {timeLeft}s</div>
         </div>
       ) : (
         <ResultPopup score={score} />
