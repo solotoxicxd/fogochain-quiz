@@ -24,5 +24,5 @@ export const questions = [
     ],
     answer: "Onchain finance performance"
   },
-  // Add up to 100 like this...
+  // Add up to 100 such questions
 ];
