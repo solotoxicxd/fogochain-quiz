@@ -1,17 +1,17 @@
 import React from "react";
 
 const getRank = (score) => {
-  if (score === 10) return { title: "🔥🔥🔥 Inferno Master", msg: "Legend! You're fully Fogolised." };
-  if (score >= 8) return { title: "🔥🔥 Flame Guardian", msg: "Your knowledge burns bright." };
-  if (score >= 5) return { title: "🔥 Ember Seeker", msg: "You're catching fire!" };
-  if (score >= 3) return { title: "🔸 Smoke Starter", msg: "Not bad, but more heat needed." };
-  return { title: "❄️ Ice Caster", msg: "Your fire is yet to be lit." };
+  if (score === 10) return { title: "Inferno Master", msg: "Blazing brilliance. You own the flame." };
+  if (score >= 8) return { title: "Flame Guardian", msg: "You walk through fire like a leader." };
+  if (score >= 5) return { title: "Ember Seeker", msg: "The fire is in you. Keep igniting." };
+  if (score >= 3) return { title: "Smoke Starter", msg: "You’ve sparked it. Fan it further." };
+  return { title: "Ice Caster", msg: "The flame eludes you. Study the spark." };
 };
 
 function ResultPopup({ score }) {
   const { title, msg } = getRank(score);
   const shareText = encodeURIComponent(
-    `🔥 I scored ${score}/10 — ${title} in the FogoChain Quiz! Try it: https://your-vercel-link.vercel.app/ #Fogolised #FogoChain`
+    `I just took the FogoChain Quiz and scored ${score}/10 — earned the rank: ${title}. Are you Fogolised yet? https://fogochain-quiz.vercel.app #FogoChain #Web3Quiz #OnchainKnowledge`
   );
 
   return (
@@ -25,7 +25,7 @@ function ResultPopup({ score }) {
         rel="noopener noreferrer"
         className="share-button"
       >
-        Share on X
+        Share your result on X
       </a>
     </div>
   );
