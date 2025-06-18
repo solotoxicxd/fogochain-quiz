@@ -42,13 +42,17 @@ function App() {
 
       {!quizStarted ? (
         <div className="start-screen">
-          <p>Step into the fire. Prove your FogoChain wisdom.</p>
-          <button className="start-btn" onClick={startQuiz}>Begin Challenge</button>
+          <p className="subtitle">Let's test if you're truly forged in fire. Welcome to the flames of Fogo.</p>
+          <button className="start-btn" onClick={startQuiz}>🔥 Begin Your Trial</button>
+          <footer className="footer">
+            Crafted with 🔥 by <strong>bytrizz</strong><br />
+            <a href="https://x.com/bytrizz404" target="_blank" rel="noopener noreferrer">@bytrizz404</a> on X · <span>bytrizz</span> on Discord
+          </footer>
         </div>
       ) : !showPopup ? (
         <div className="quiz-box">
           <h2>{quizSet[currentQ].question}</h2>
-          <div className="options">
+          <div className="options-grid">
             {quizSet[currentQ].options.map((opt, idx) => (
               <button key={idx} onClick={() => handleAnswer(opt)}>
                 {opt}
@@ -58,7 +62,7 @@ function App() {
           <div className="timer">Time left: {timeLeft}s</div>
         </div>
       ) : (
-        <ResultPopup score={score} />
+        <ResultPopup score={score} onRestart={startQuiz} />
       )}
     </div>
   );
