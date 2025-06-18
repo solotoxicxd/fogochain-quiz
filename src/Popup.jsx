@@ -1,33 +1,33 @@
-import React from "react";
+import React from 'react';
 
 const getRank = (score) => {
-  if (score === 10) return { title: "Inferno Master", msg: "You didn't just pass — you incinerated the challenge." };
-  if (score >= 8) return { title: "Flame Guardian", msg: "Sharp. Bold. You protect the fire with wit." };
-  if (score >= 5) return { title: "Ember Seeker", msg: "The embers burn in you. Keep going, firestarter." };
-  if (score >= 3) return { title: "Smoke Starter", msg: "You made a spark — next time, blaze it." };
-  return { title: "Ice Caster", msg: "Cold feet in the flame realm. Study harder, ignite better." };
+  if (score === 10) return 'Inferno Master';
+  if (score >= 8) return 'Flame Guardian';
+  if (score >= 6) return 'Blazing Seeker';
+  if (score >= 4) return 'Kindled Soul';
+  return 'Ash Whisperer';
 };
 
-function ResultPopup({ score, onRestart }) {
-  const { title, msg } = getRank(score);
+function ResultPopup({ score, total, restart }) {
+  const rank = getRank(score);
   const shareText = encodeURIComponent(
-    `Scored ${score}/10 in the FogoChain Knowledge Trial — earned the rank: ${title}. Are you forged or frozen? https://fogochain-quiz.vercel.app #FogoChain #Web3Quiz #bytrizz`
+    `I just took the FogoChain Quiz and scored ${score}/${total} — earned the rank: ${rank}. Are you Fogolised yet?`
   );
+  const shareURL = `https://x.com/intent/tweet?text=${shareText}&url=https://fogochain-quiz.vercel.app&hashtags=FogoChain,Web3Quiz`;
 
   return (
     <div className="result-popup">
-      <h2>{title}</h2>
-      <p>{msg}</p>
-      <p className="score">🔥 Score: {score} / 10</p>
-      <a
-        href={`https://twitter.com/intent/tweet?text=${shareText}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="share-button"
-      >
-        Share your result on X
-      </a>
-      <button className="restart-btn" onClick={onRestart}>Take the Trial Again</button>
+      <h2>Quiz Completed</h2>
+      <p className="score">Score: {score}/{total}</p>
+      <p className="score">Rank: <strong>{rank}</strong></p>
+
+      <div>
+        <a href={shareURL} target="_blank" rel="noopener noreferrer" className="share-button">
+          Share Your Results on X
+        </a>
+      </div>
+
+      <button className="restart-btn" onClick={restart}>Retake Quiz</button>
     </div>
   );
 }
