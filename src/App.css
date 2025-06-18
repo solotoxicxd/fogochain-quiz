@@ -18,7 +18,7 @@
   --font-md: 1rem;
   --font-lg: 1.25rem;
   --font-xl: 2rem;
-  --font-xxl: 3.25rem;
+  --font-xxl: 3rem;
 
   --max-width: 860px;
 }
@@ -29,17 +29,15 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #8b0000, #ff6b00, #ffc107);
   background-size: 400% 400%;
-  animation: flameGradient 15s ease infinite;
+  animation: bgShift 12s ease infinite;
   color: var(--text-light);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes flameGradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .app-container {
@@ -47,9 +45,8 @@ body {
   margin: auto;
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
-  background-color: rgba(26, 26, 26, 0.85);
+  background-color: rgba(26, 26, 26, 0.88);
   border-radius: 16px;
-  box-shadow: 0 0 40px rgba(255, 104, 0, 0.7);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -61,8 +58,6 @@ body {
   color: var(--accent);
   margin-bottom: var(--spacing-lg);
   font-weight: 700;
-  letter-spacing: -0.5px;
-  text-shadow: 0 0 8px #ffb300cc;
 }
 
 .subtitle {
@@ -71,8 +66,6 @@ body {
   color: #ffc9a8;
   font-style: italic;
   padding: 0 var(--spacing-sm);
-  line-height: 1.8;
-  text-shadow: 0 0 6px #ff9a00bb;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -81,11 +74,10 @@ body {
 .start-screen,
 .quiz-box,
 .result-popup {
-  background: #3c1000ee;
-  border: 2px solid var(--flame);
+  background: #2e0c00;
+  border: 1px solid var(--flame);
   padding: var(--spacing-lg) var(--spacing-md);
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(255, 68, 0, 0.6);
+  border-radius: 12px;
   margin-top: var(--spacing-lg);
 }
 
@@ -95,31 +87,23 @@ body {
   justify-content: center;
   gap: var(--spacing-md);
   margin: var(--spacing-lg) 0;
-  padding: 0 var(--spacing-sm);
 }
 
 .options-grid button {
   min-width: 45%;
-  flex: 1 1 auto;
-  white-space: normal;
   background-color: var(--primary);
   color: #fff;
-  border-radius: 8px;
-  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: 6px;
+  padding: var(--spacing-md);
   font-weight: 600;
   font-size: var(--font-md);
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 8px rgba(255, 107, 0, 0.6);
   cursor: pointer;
+  transition: background-color 0.25s ease;
 }
 
-.options-grid button:hover,
-.options-grid button:focus {
+.options-grid button:hover {
   background-color: var(--flame);
-  outline: none;
-  box-shadow: 0 0 20px #ff5722cc;
-  transform: translateY(-3px);
-  transition: all 0.3s ease;
 }
 
 .timer {
@@ -127,67 +111,61 @@ body {
   margin-top: var(--spacing-md);
   font-weight: 700;
   color: var(--accent);
-  text-shadow: 0 0 6px #ffb300cc;
 }
 
 .start-btn,
 .restart-btn,
 .share-button {
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-lg);
   font-size: var(--font-lg);
   background-color: var(--flame);
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin: var(--spacing-sm) var(--spacing-md);
+  transition: background-color 0.3s ease;
+  margin: var(--spacing-sm);
   font-weight: 700;
-  min-width: 160px;
-  box-shadow: 0 4px 12px #ff5722aa;
+  min-width: 140px;
 }
 
 .start-btn:hover,
 .restart-btn:hover,
 .share-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 24px #ff5722ff;
+  background-color: var(--primary);
 }
 
+/* Removed badge styles completely */
+
+/* Footer */
 .footer {
   margin-top: var(--spacing-xl);
   font-size: var(--font-sm);
   color: #ffddb0;
-  line-height: 1.5;
   padding: 0 var(--spacing-sm);
-  text-shadow: 0 0 5px #ffb300cc;
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Responsive */
+/* Mobile adjustments */
 @media screen and (max-width: 480px) {
   .quiz-title {
     font-size: 2.2rem;
   }
+
   .subtitle {
     font-size: var(--font-md);
   }
-  .options-grid {
-    gap: var(--spacing-sm);
-  }
+
   .options-grid button {
     min-width: 100%;
-    font-size: var(--font-md);
   }
+
   .start-btn,
   .restart-btn,
   .share-button {
     min-width: 100%;
     font-size: var(--font-md);
-    padding: var(--spacing-sm);
   }
+
   .app-container {
     padding: var(--spacing-lg) var(--spacing-sm);
   }
