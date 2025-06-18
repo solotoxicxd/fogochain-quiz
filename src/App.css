@@ -45,7 +45,7 @@ body {
   margin: auto;
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
-  background-color: rgba(26, 26, 26, 0.88);
+  background-color: rgba(26, 26, 26, 0.9);
   border-radius: 16px;
   min-height: 100vh;
   display: flex;
@@ -85,12 +85,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacing-md);
+  row-gap: var(--spacing-md);
+  column-gap: var(--spacing-md);
   margin: var(--spacing-lg) 0;
 }
 
 .options-grid button {
-  min-width: 45%;
+  flex: 0 1 48%;
   background-color: var(--primary);
   color: #fff;
   border: none;
@@ -135,7 +136,7 @@ body {
   background-color: var(--primary);
 }
 
-/* Removed badge styles completely */
+/* Removed badge */
 
 /* Footer */
 .footer {
@@ -143,10 +144,11 @@ body {
   font-size: var(--font-sm);
   color: #ffddb0;
   padding: 0 var(--spacing-sm);
+  text-align: center;
 }
 
-/* Mobile adjustments */
-@media screen and (max-width: 480px) {
+/* Responsive for mobile */
+@media screen and (max-width: 600px) {
   .quiz-title {
     font-size: 2.2rem;
   }
@@ -155,14 +157,20 @@ body {
     font-size: var(--font-md);
   }
 
+  .options-grid {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
   .options-grid button {
-    min-width: 100%;
+    flex: 1 1 100%;
+    font-size: var(--font-md);
   }
 
   .start-btn,
   .restart-btn,
   .share-button {
-    min-width: 100%;
+    width: 100%;
     font-size: var(--font-md);
   }
 
