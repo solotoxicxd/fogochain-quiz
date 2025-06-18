@@ -1,3 +1,27 @@
+:root {
+  --primary: #ff6b00;
+  --accent: #ffc107;
+  --deep: #8b0000;
+  --flame: #ff4500;
+  --charcoal: #1a1a1a;
+  --text-light: #fff8f0;
+  --max-width: 860px;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Font sizes */
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 2rem;
+  --font-xxl: 3.25rem;
+}
+
 /* 🔥 Animated flame background */
 .flame-bg {
   background: linear-gradient(145deg, #ff6b00 0%, #ffb300 50%, #8b0000 100%);
@@ -33,4 +57,205 @@
   }
 }
 
-/* Add your existing styles here from your App.css */
+/* Base body and container */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--charcoal);
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  background-color: #2a0d00cc; /* slight transparent dark bg for contrast */
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(255, 104, 0, 0.7);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Titles and subtitles */
+.quiz-title {
+  font-size: var(--font-xxl);
+  color: var(--accent);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 8px #ffb300cc;
+}
+
+.subtitle {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-lg);
+  color: #ffc9a8;
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+  line-height: 1.8;
+  text-shadow: 0 0 6px #ff9a00bb;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Quiz box & popup background with padding */
+.start-screen,
+.quiz-box,
+.result-popup {
+  background: #3c1000ee;
+  border: 2px solid var(--flame);
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 68, 0, 0.6);
+  margin-top: var(--spacing-lg);
+}
+
+/* Option buttons */
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  padding: 0 var(--spacing-sm);
+}
+
+.options-grid button {
+  min-width: 45%;
+  flex: 1 1 auto;
+  white-space: normal;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-weight: 600;
+  font-size: var(--font-md);
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 107, 0, 0.6);
+}
+
+.options-grid button:hover,
+.options-grid button:focus {
+  background-color: var(--flame);
+  outline: none;
+  box-shadow: 0 0 20px #ff5722cc;
+  cursor: pointer;
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+/* Timer with stronger contrast */
+.timer {
+  font-size: var(--font-lg);
+  margin-top: var(--spacing-md);
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 6px #ffb300cc;
+}
+
+/* Buttons (start, restart, share) */
+.start-btn,
+.restart-btn,
+.share-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-lg);
+  background-color: var(--flame);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: var(--spacing-sm) var(--spacing-md);
+  font-weight: 700;
+  min-width: 160px;
+  box-shadow: 0 4px 12px #ff5722aa;
+}
+
+.start-btn:hover,
+.restart-btn:hover,
+.share-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px #ff5722ff;
+}
+
+/* Badge container */
+.badge-container {
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) auto;
+  background: #3c1000cc;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  max-width: 320px;
+  box-shadow: 0 0 20px rgba(255, 104, 0, 0.6);
+  color: white;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Leaderboard text */
+.leaderboard h3 {
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-lg);
+  text-shadow: 0 0 5px #ffb300cc;
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.leaderboard li {
+  font-size: var(--font-md);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Footer with padding and color */
+.footer {
+  margin-top: var(--spacing-xl);
+  font-size: var(--font-sm);
+  color: #ffddb0;
+  line-height: 1.5;
+  padding: 0 var(--spacing-sm);
+  text-shadow: 0 0 5px #ffb300cc;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 480px) {
+  .quiz-title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: var(--font-md);
+  }
+  .options-grid {
+    gap: var(--spacing-sm);
+  }
+  .options-grid button {
+    min-width: 100%;
+    font-size: var(--font-md);
+  }
+  .start-btn,
+  .restart-btn,
+  .share-button {
+    min-width: 100%;
+    font-size: var(--font-md);
+    padding: var(--spacing-sm);
+  }
+  .app-container {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+}
