@@ -1,81 +1,42 @@
-import React, { useEffect, useState, useRef } from "react";
-import html2canvas from "html2canvas";
+import React from "react";
 
 const getRank = (score) => {
-  if (score === 10) return "🔥 Inferno Master";
-  if (score >= 8) return "Flame Guardian";
-  if (score >= 6) return "Blazing Seeker";
-  if (score >= 4) return "Kindled Soul";
-  return "Ash Whisperer";
+  if (score === 10) return "🔥 Flame Master";
+  if (score >= 8) return "🔥 Blazing Soul";
+  if (score >= 6) return "🔥 Lit Ember";
+  if (score >= 3) return "🔥 Spark Seeker";
+  return "❄️ Cold Ash";
 };
 
-function ResultPopup({ score, total, restart }) {
-  const [leaderboard, setLeaderboard] = useState([]);
-  const badgeRef = useRef(null);
+const getMessage = (score) => {
+  if (score === 10) return "You're forged by fire.";
+  if (score >= 8) return "You carry the heat proudly.";
+  if (score >= 6) return "You're warming up nicely.";
+  if (score >= 3) return "You're catching the flame.";
+  return "Time to relight your spark.";
+};
 
+const ResultPopup = ({ score, total, onRestart }) => {
   const rank = getRank(score);
-  const timestamp = new Date().toLocaleString();
-
+  const message = getMessage(score);
   const shareText = encodeURIComponent(
-    `I took the FogoChain Quiz and scored ${score}/${total}! Earned the rank of "${rank}". 🔥 Try yours:`
+    `Scored ${score}/${total} on the FogoChain Quiz — Rank: ${rank.replace("🔥", "").trim()}! 🔥 Try it yourself!`
   );
-  const shareURL = `https://x.com/intent/tweet?text=${shareText}&url=https://fogochain-quiz.vercel.app&hashtags=FogoChain,Web3Quiz`;
-
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("fogo-leaderboard")) || [];
-    const updated = [...stored, { score, rank, time: timestamp }];
-    localStorage.setItem("fogo-leaderboard", JSON.stringify(updated));
-    setLeaderboard(updated.slice(-5).reverse());
-  }, []);
-
-  const downloadBadge = () => {
-    if (badgeRef.current) {
-      html2canvas(badgeRef.current).then((canvas) => {
-        const link = document.createElement("a");
-        link.download = `FogoBadge-${score}.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    }
-  };
+  const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=https://fogochain.vercel.app`;
 
   return (
-    <div className="result-popup fade-in">
-      <h2>Quiz Completed</h2>
-      <div className="badge-container" ref={badgeRef}>
-        <p className="score">
-          You scored {score} out of {total}
-        </p>
-        <p className="score">
-          Rank: <strong>{rank}</strong>
-        </p>
-      </div>
-
-      <div style={{ marginTop: "1rem" }}>
-        <button className="share-button" onClick={downloadBadge}>
-          📥 Download Badge
-        </button>
-        <a href={shareURL} className="share-button" target="_blank" rel="noopener noreferrer">
-          🔁 Share on X
+    <div className="result-popup">
+      <h2>{rank}</h2>
+      <p className="score">You scored {score} out of {total}</p>
+      <p className="subtitle">{message}</p>
+      <div>
+        <button className="restart-btn" onClick={onRestart}>Try Again</button>
+        <a className="share-button" href={shareUrl} target="_blank" rel="noopener noreferrer">
+          Share on X
         </a>
-      </div>
-
-      <button className="restart-btn" onClick={restart}>
-        🔥 Retake the Quiz
-      </button>
-
-      <div className="leaderboard">
-        <h3>🔥 Recent Scores</h3>
-        <ul>
-          {leaderboard.map((entry, i) => (
-            <li key={i}>
-              <strong>{entry.rank}</strong> - {entry.score}/10 <span>({entry.time})</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
-}
+};
 
 export default ResultPopup;
