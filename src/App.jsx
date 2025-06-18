@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { questions } from './questions';
-import ResultPopup from './Popup';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { questions } from "./questions";
+import ResultPopup from "./Popup";
 
 function App() {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -16,7 +15,7 @@ function App() {
     if (!quizStarted || showPopup) return;
     if (timeLeft <= 0) handleAnswer(null);
 
-    const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
+    const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
     return () => clearInterval(timer);
   }, [timeLeft, currentQ, quizStarted, showPopup]);
 
@@ -49,19 +48,18 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container flame-bg">
       <h1 className="quiz-title">FogoChain Knowledge Trial</h1>
       <p className="subtitle">Let’s test if you’re truly forged in fire 🔥</p>
 
       {loading ? (
-        <div className="start-screen">
+        <div className="start-screen fade-in">
           <p className="subtitle">🔥 Warming up your Trial... 🔥</p>
         </div>
       ) : !quizStarted ? (
-        <div className="start-screen">
+        <div className="start-screen fade-in">
           <p>
-            Welcome to the Fogo Trials — 10 high-speed questions from the depths of the chain. 
-            Only the brightest flames survive.
+            Welcome to the Fogo Trials — 10 high-speed questions from the depths of the chain. Only the brightest flames survive.
           </p>
           <button className="start-btn" onClick={startQuiz}>Ignite Quiz</button>
         </div>
@@ -76,11 +74,7 @@ function App() {
           <div className="timer">⏱️ {timeLeft}s</div>
         </div>
       ) : (
-        <ResultPopup
-          score={score}
-          total={quizSet.length}
-          restart={restartQuiz}
-        />
+        <ResultPopup score={score} total={quizSet.length} restart={restartQuiz} />
       )}
 
       <footer className="footer">
