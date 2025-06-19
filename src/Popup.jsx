@@ -12,26 +12,26 @@ export default function ResultPopup({ score, total, onRestart }) {
   const getShareMessage = (rank) => {
     switch (rank) {
       case "🔥 Flame Master":
-        return `Forged in pure fire — I aced the FogoChain quiz ${score}/${total} and earned the title “${rank}”! Dare to beat that?`;
+        return `Perfect score! I blazed through the FogoChain quiz ${score}/${total} and earned the “${rank}” title.🔥 Think you can handle the heat?`;
       case "🔥 Blazing Soul":
-        return `Scored ${score}/${total} in the FogoChain quiz — I’m officially a “${rank}”. Fire runs through my onchain veins! 🔥`;
+        return `On fire! Scored ${score}/${total} in the FogoChain quiz — crowned as a “${rank}”. The flames are alive. 🔥🔥`;
       case "🔥 Lit Ember":
-        return `I scored ${score}/${total} and earned the “${rank}” badge. Still glowing, still learning. Are you Fogo enough?`;
+        return `Still burning! Got ${score}/${total} and became a “${rank}”. The fire’s in me — but there’s room to glow brighter. ✨`;
       case "🔥 Spark Seeker":
-        return `Barely lit but not out — I scored ${score}/${total} on the FogoChain quiz and became a “${rank}”. Can you do better?`;
+        return `Not out yet! Scored ${score}/${total} and earned the “${rank}” rank. Still chasing that blaze. 🧡 Ready to ignite?`;
       case "❄️ Cold Ash":
-        return `Oof. Scored ${score}/${total} and became a “${rank}” in the FogoChain quiz. Time to reignite my flame. You try it!`;
+        return `Yikes. Scored ${score}/${total} — officially a “${rank}” 🥶. I need to relight my flame. Think you can do better?`;
       default:
-        return `I scored ${score}/${total} in the FogoChain quiz. Can you beat me?`;
+        return `I scored ${score}/${total} in the FogoChain quiz. Come test your flame.`;
     }
   };
 
   const rank = getRank(score);
   const shareText = encodeURIComponent(
-    `${getShareMessage(rank)}\nMade with 🔥+❤️ by @bytrizz404`
+    `${getShareMessage(rank)}\n🔥 Take the FogoChain Trial → https://fogochain.vercel.app\nMade with 🔥+❤️ by @bytrizz44`
   );
 
-  const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=https://fogochain.vercel.app`;
+  const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
 
   return (
     <div className="result-popup">
