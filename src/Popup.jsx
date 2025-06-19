@@ -28,7 +28,7 @@ export default function ResultPopup({ score, total, onRestart }) {
 
   const rank = getRank(score);
   const shareText = encodeURIComponent(
-    `${getShareMessage(rank)}\n🔥 Take the FogoChain Trial → https://fogochain.vercel.app\nMade with 🔥+❤️ by @bytrizz44`
+    `${getShareMessage(rank)}\n🔥 Take the FogoChain Trial → https://fogochain.vercel.app\nMade with 🔥+❤️ by @bytrizz404`
   );
 
   const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
