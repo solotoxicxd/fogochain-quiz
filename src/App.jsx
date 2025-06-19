@@ -115,7 +115,7 @@ export default function App() {
       <footer className="footer">
         Crafted with care for the FogoChain fam by <strong>Bytrizz</strong> 💛<br />
         Connect with me:<br />
-        <a href="https://x.com/bytrizz44" target="_blank" rel="noreferrer">@bytrizz44 on X</a> &nbsp;|&nbsp;
+        <a href="https://x.com/bytrizz44" target="_blank" rel="noreferrer">@bytrizz404 on X</a> &nbsp;|&nbsp;
         <span>bytrizz on Discord</span><br />
         Made for fun, for fire, and for all who feel the flame. 🔥
       </footer>
