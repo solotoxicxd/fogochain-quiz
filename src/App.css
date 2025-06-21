@@ -111,16 +111,31 @@ body {
   border: none;
   border-radius: 8px;
   padding: var(--spacing-md) var(--spacing-lg);
-  margin: var(--spacing-md);
   font-size: var(--font-md);
   cursor: pointer;
   transition: background 0.3s ease;
+  text-decoration: none;
 }
 
 .start-btn:hover,
 .restart-btn:hover,
 .share-button:hover {
   background: var(--accent);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-top: var(--spacing-lg);
+}
+
+@media screen and (min-width: 600px) {
+  .button-group {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .footer {
@@ -147,6 +162,15 @@ body {
   .restart-btn,
   .share-button {
     width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .quiz-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
   }
 }
-
