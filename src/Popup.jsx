@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css"; // Ensure styles for .share-button are here
 
 export default function ResultPopup({ score, total, onRestart }) {
   const getRank = (s) => {
