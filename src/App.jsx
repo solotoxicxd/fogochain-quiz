@@ -52,7 +52,7 @@ export default function App() {
     if (currentQ === quizSet.length - 1) setShowPopup(true);
     else {
       setCurrentQ(i => i + 1);
-      setTimeLeft(5);
+      setTimeLeft(10);
       setSelected(null);
       setReveal(false);
     }
@@ -62,7 +62,7 @@ export default function App() {
     setStarted(false);
     setCurrentQ(0);
     setScore(0);
-    setTimeLeft(7);
+    setTimeLeft(10);
     setShowPopup(false);
     setSelected(null);
     setReveal(false);
@@ -72,7 +72,7 @@ export default function App() {
     <div className="app-container">
       <h1 className="quiz-title">Are You Fogo Enough?</h1>
       <p className="subtitle">
-        A quick-fire challenge to test your flame—10 questions, 5 seconds each. Let’s find out if you’re truly forged in fire.
+        A quick-fire challenge to test your flame—10 questions, 10 seconds each. Let’s find out if you’re truly forged in fire.
       </p>
 
 
