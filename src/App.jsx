@@ -62,7 +62,7 @@ export default function App() {
     setStarted(false);
     setCurrentQ(0);
     setScore(0);
-    setTimeLeft(5);
+    setTimeLeft(7);
     setShowPopup(false);
     setSelected(null);
     setReveal(false);
