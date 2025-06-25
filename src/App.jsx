@@ -8,7 +8,7 @@ export default function App() {
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [selected, setSelected] = useState(null);
   const [reveal, setReveal] = useState(false);
   const tickRef = useRef();
